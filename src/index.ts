@@ -31,19 +31,26 @@ export default {
 
     return new Response(`
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 200 100">
-<rect x="0" y="0" width="200" height="100" fill="#333" />
-<text id="counterText" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="40" fill="#fff">${count}</text>
-<rect x="0" y="0" width="200" height="100" fill="transparent">
-<animate attributeName="fill" from="transparent" to="rgba(0,0,0,0.1)" dur="0.2s" begin="mousedown" />
-<animate attributeName="fill" from="rgba(0,0,0,0.1)" to="transparent" dur="0.2s" begin="mouseup" />
-</rect>
-<rect x="0" y="0" width="200" height="100" fill="transparent">
-<animate attributeName="fill" from="transparent" to="rgba(0,0,0,0.1)" dur="0.2s" begin="touchstart" />
-<animate attributeName="fill" from="rgba(0,0,0,0.1)" to="transparent" dur="0.2s" begin="touchend" />
-</rect>
+  <rect x="0" y="0" width="200" height="100" stroke="transparent" />
+    <text id="counterText" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="40" fill="#fff">${count}</text>
+    <rect x="0" y="0" width="200" height="100" fill="transparent">
+    <animate attributeName="fill" from="transparent" to="rgba(0,0,0,0.1)" dur="0.2s" begin="mousedown" />
+    <animate attributeName="fill" from="rgba(0,0,0,0.1)" to="transparent" dur="0.2s" begin="mouseup" />
+  </rect>
+  <rect x="0" y="0" width="200" height="100" fill="transparent">
+    <animate attributeName="fill" from="transparent" to="rgba(0,0,0,0.1)" dur="0.2s" begin="touchstart" />
+    <animate attributeName="fill" from="rgba(0,0,0,0.1)" to="transparent" dur="0.2s" begin="touchend" />
+  </rect>
 </svg>
 `
-);
+      , {
+        status: 200,
+        headers: {
+          "Content-Type": "image/svg+xml",
+          "Cache-Control": "max-age=1"
+        }
+      }
+    );
   }
 };
 
