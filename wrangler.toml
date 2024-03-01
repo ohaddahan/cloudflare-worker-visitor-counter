@@ -1,0 +1,11 @@
+name = "cloudflare-worker-counter"
+main = "src/index.ts"
+compatibility_date = "2024-03-01"
+
+[[durable_objects.bindings]]
+name = "COUNTER"
+class_name = "Counter"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["Counter"]
